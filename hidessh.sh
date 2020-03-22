@@ -41,6 +41,9 @@ service squid restart
 cd
 wget -O /usr/local/bin/userdelexpired "https://www.dropbox.com/s/cwe64ztqk8w622u/userdelexpired?dl=1" && chmod +x /usr/local/bin/userdelexpired
 
+
 #install stunnel
 cd
 apt-get -y stunnel4
+wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/kumpulanremaja/vpssh/master/stunnel.conf"
+sed -i  /etc/stunnel/stunnel.conf;
