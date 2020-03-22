@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # install package
-apt-get update;
-apt-get upgrade;
+apt-get -y update;
+apt-get -y upgrade;
 apt-get -y install wget curl;
 
 # set time GMT +7
@@ -27,7 +27,7 @@ service dropbear restart
 
 #intall ngix
 cd
-apt-get install nginx
+apt-get -y install nginx
 
 # install squid3
 cd
