@@ -37,6 +37,10 @@ wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/kholizsivoi/scr
 sed -i  /etc/squid/squid.conf;
 service squid restart
 
+#delete acoount 
+cd
+wget -O /usr/local/bin/userdelexpired "https://www.dropbox.com/s/cwe64ztqk8w622u/userdelexpired?dl=1" && chmod +x /usr/local/bin/userdelexpired
+
 #install stunnel
 cd
 apt-get -y stunnel4
