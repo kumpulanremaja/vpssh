@@ -21,8 +21,7 @@ echo "en el puerto 7300, utilizado por programas como HTTP Inyector de Evozi."
 echo "Permitiendo así el uso del protocolo UDP para juegos en línea,"
 echo "llamadas VoIP y otras cosas interesantes."
 echo "" ; tput sgr0
-read -p "Desea continuar? [s/n]: " -e -i n respuesta
-if [[ "$respuesta" = 's' ]]; then
+if [[ "$respuesta" = 'n' ]]; then
 	echo ""
 	echo "La instalación puede tardar bastante ... sea paciente!"
 	sleep 3
