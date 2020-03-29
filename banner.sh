@@ -1,11 +1,11 @@
-#sed -i 's/INFO/INFO\nBanner bannerssh' /etc/ssh/sshd_config
+#sed -i 's/INFO/INFO\nBanner /etc/banner-akun' /etc/ssh/sshd_config
 
 #replace banner dropbear
-sed -i 's/DROPBEAR_BANNER=""/DROPBEAR_BANNER="bannerssh"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_BANNER=""/DROPBEAR_BANNER="/etc/banner-akun"/g' /etc/default/dropbear
 
 # bannerssh
-wget "https://raw.githubusercontent.com/denysiswanto/autoscript2/master/menu/bannerssh"
-mv ./bannerssh /bannerssh
-chmod 0644 /bannerssh
+wget "https://raw.githubusercontent.com/kumpulanremaja/vpssh/master/banner"
+mv /banner /etc/banner-akun
+chmod 0644 /etc/banner-akun
 service dropbear restart
 service ssh restart
