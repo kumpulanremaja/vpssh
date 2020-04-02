@@ -5,10 +5,6 @@ myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
 # set time GMT +7
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
-# set locale
-sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
-service ssh restart
-
 # install essential package
 apt-get -y install build-essential
 apt-get -y install cron bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs
@@ -35,23 +31,6 @@ sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=44/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 77"/g' /etc/default/dropbear
 service ssh restart
 service dropbear restart
-
-
-# install squid3
-cd
-apt-get -y install squid3
-rm /etc/squid/squid.conf
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/kumpulanremaja/vpssh/master/squid.conf"
-sed -i  /etc/squid/squid.conf;
-service squid restart
-
-
-# bannerssh
-wget -O bannerssh.sh "https://raw.githubusercontent.com/kumpulanremaja/vpssh/master/banner.sh"
-chmod 700 bannerssh.sh
-./bannerssh.sh
-rm bannerssh.sh
-
 
 
 # auto reboot 24jam
@@ -147,8 +126,11 @@ chmod +x ./delete-user-expire.sh
 
 
 
+clear
 service cron restart
+service openvpn restart
 service squid3 restart
 service ssh restart
+service webmin restart
 service dropbear restart
 service nginx start
